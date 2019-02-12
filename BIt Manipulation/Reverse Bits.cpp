@@ -1,20 +1,34 @@
 /*
-InterviewBit : Single Number
+InterviewBit : Reverse Bits
 
-Link : https://www.interviewbit.com/problems/single-number/
+Link : https://www.interviewbit.com/problems/reverse-bits/
 
-Asked in 
+Asked in:
 
+Nvidia
+HCL
 Amazon
 
-Given an array of integers, every element appears twice except for one. Find that single one.
+Reverse bits of an 32 bit unsigned integer
 
-Note: Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+Example 1:
 
-Example :
+x = 0,
 
-Input : [1 2 2 3 1]
-Output : 3
+          00000000000000000000000000000000  
+=>        00000000000000000000000000000000
+return 0
+
+Example 2:
+
+x = 3,
+
+          00000000000000000000000000000011 
+=>        11000000000000000000000000000000
+return 3221225472
+
+Since java does not have unsigned int, use long
+
 
 */
 unsigned int swapBits(unsigned int A,int i,int j){
