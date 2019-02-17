@@ -34,6 +34,7 @@ int romanToInt(char A){
 		case 'C':return 100;
 		case 'D':return 500;
 		case 'M':return 1000;
+		default :return 0;
 	}
 }
 
@@ -42,7 +43,7 @@ int interviewBitSolution(string A){
 	int ans=0;
 	for(int i=0;i<n;i++){
 		int roman = romanToInt(A[i]);
-		if((i!=n-1)&& (roman < romanToInt(A[i+1]))) ans-=roman;
+		if((i!=n-1)&& (roman < romanToInt(A[i+1]) )) ans-=roman;
 		else ans+=roman;
 	}
 	return ans;
@@ -54,11 +55,11 @@ int customHardcodedApproach(string A){
 	for(int i=0;i<n;i++){
 		char c = A[i];
 		switch(c){
-			case 'I': (i!=n-1 && (A[i+1] == 'V' ||A[i+1] == 'X'))?ans--:ans++;
+			case 'I': 	(i!=n-1 && (A[i+1] == 'V' ||A[i+1] == 'X'))?ans--:ans++;
 						break;
 			case 'V': 	ans+=5;
 						break;
-			case 'X': (i!=n-1 && (A[i+1] == 'L'||A[i+1] == 'C'))?ans -=10:ans+=10;
+			case 'X': 	(i!=n-1 && (A[i+1] == 'L'||A[i+1] == 'C'))?ans -=10:ans+=10;
 						break;
 			case 'L':	ans+=50;
 						break;
