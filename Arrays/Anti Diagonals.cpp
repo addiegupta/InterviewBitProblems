@@ -51,12 +51,15 @@ Return the following  :
 vector<vector<int>> Solution::diagonal(vector<vector<int> > &A) {
 
     int n = A.size();
-    vector<vector<int>> ans;
-    vector<int> temp;
-    for(int i=0;i<(n-1)*2+1;i++)ans.push_back(temp);
-    if(n==0)return ans;
+
+    // Total number of diagonals for an n*n matrix
+    int N = (n-1)*2 + 1;
+
+    // Initialise ans vector N*N
+    vector<vector<int>> ans(N);
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){
+            // Push the value in correct row
             ans[i+j].push_back(A[i][j]);
         }
     }
