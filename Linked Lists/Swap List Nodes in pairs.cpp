@@ -37,9 +37,11 @@ ListNode* initialSolution(ListNode* A){
         if(prevChain)   prevChain->next = temp2;
         else  A = temp2;
         
+        // Swap
         temp1->next = temp2->next;
         temp2->next = temp1;
         
+        // Initialisation for next iteration
         prevChain = temp1;
         temp1 = temp1->next;
         
