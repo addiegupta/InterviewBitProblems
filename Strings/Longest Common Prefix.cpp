@@ -28,15 +28,29 @@ The answer would be “a”.
 
 */
 string Solution::longestCommonPrefix(vector<string> &A) {
+
+	// Stores longest common prefix
 	string ans;
+	
 	int n = A.size();
+	char c;
+	
+	// Entire string is answer
 	if(n==1)return A[0];
+
 	for(int i=0;i<A[0].length();i++){
-		if(i>=A[0].length())return ans;
-		char c = A[0][i];
-		for(int j=1;j<n;j++){
+	
+		// Traverse over the strings
+		for(int j=0;j<n;j++){
+			
+			// Length of string is shorter than required index
 			if(i>=A[j].length())return ans;
-			if(A[j][i]!=c)return ans;
+			
+			// Get character at index i in first string
+			if(j==0)c=A[0][i];
+			
+			// Different character found
+			if(j!=0 && A[j][i]!=c)return ans;
 		}
 		ans.append(1,c);
 	}
