@@ -32,46 +32,65 @@ A: In this case, return -1
 
 */
 
-// Stores the minimum elements at point of insertion
-stack<int> minS;
+// Check version history for older solution using 2 stacks-------------------------------------------------------
+
 
 // Stores the input elements
 stack<int> s;
+int minEle = INT_MAX;
 
-// Clear out the stacks
+// Reset variables
 MinStack::MinStack() {
-    while(!minS.empty())minS.pop();
     while(!s.empty())s.pop();
+    minEle = INT_MAX;
 }
 
 
 void MinStack::push(int x) {
-	
-	// Add the element to main stack
-	s.push(x);
 
-	// Add element only if minstack is empty or the new value is less than equal to current min
-    if(minS.empty() || minS.top()>x)minS.push(x);
+	if(x<minEle){
+
+		// Now previous min element can be retrieved from this stack value
+		s.push(2*x - minEle);
+		
+		// Set new element as min element
+		minEle = x;
+	}
+
+	// Simply push element
+	else s.push(x);
 }
 
 void MinStack::pop() {
     
     // No elements
     if(s.empty()) return;
-    
-    // Pop from min stack only if the value to be removed is less than or equal to min stack top value
-    if(s.top()<=minS.top())minS.pop();
-    s.pop();
+	
+	// Retrieve the new minimum value after this value is removed    
+    if(s.top()<minEle){
+
+    	minEle = 2*minEle - s.top();
+    	s.pop();
+    }
+    else s.pop();
 }
 
 int MinStack::top() {
     
-    if(s.empty())return -1;
-    return s.top();
+    if(s.empty()) return -1;
+    
+    if(s.top()<minEle) {
+    	// Retrieve new min element if top element is removed
+    	int temp = 2* minEle - s.top();
+
+    	// Return actual value that should have been inserted
+    	return (s.top() + temp)/2;
+	}    
+    else return s.top();
 }
 
 int MinStack::getMin() {
-    if(minS.empty())return -1;
-    return minS.top();
-}
+    if(s.empty())return -1;
+    return minEle;
+}	
 
