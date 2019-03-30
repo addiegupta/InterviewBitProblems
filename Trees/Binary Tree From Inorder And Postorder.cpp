@@ -35,7 +35,7 @@ Return :
  * };
  */
 
-
+// This search can be optimised by storing values in a hash so search operation becomes O(1) and overall problem time complexity becomes from O(n^2) to O(n) but O(n) space is required
 // Searches for the element val in the subarray A[start,end]
 int search (vector<int> &A, int start,int end,int val){
     
