@@ -44,8 +44,6 @@ ans = [2nd number, 5th number] = [10, 2]
 //
 //
 
-
-
 #define ll long long
 ll getCount(ll A, ll l,ll r){
 	// cout<<"getCount"<<endl;

@@ -1,0 +1,6 @@
+Understand the following
+
+Arrays/Maximum Consecutive Gap
+Arrays/Maximum Absolute Difference
+Binary Search/Allocate Books
+Heaps/Ways to Form Max Heap
