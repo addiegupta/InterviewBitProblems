@@ -70,4 +70,41 @@ public class Solution {
         // Min health required before entering first room
         return dp[0][0];
     }
+
+    /*
+        -------------BETTER SOLUTION O(n) space
+    public int calculateMinimumHP(ArrayList<ArrayList<Integer>> A) {
+        
+        // Row and column count
+        int m = A.size();
+        int n = A.get(0).size();
+
+        // Stores the minimum knight health required while entering the corresponding room
+        int[] dp = new int[n];
+
+        // Stores the best adjacent (down or right) room dp value to minimise required initial health
+        // Another way to phrase it: best stores the min value of health required while exiting the room
+        int best;
+        // Start from bottom right corner; reverse traversal
+        for(int i=m-1;i>=0;i--){
+            for(int j=n-1;j>=0;j--){
+                // Reached corner; final health should be at least 1
+                if(j==n-1&& i==m-1)best = 1;
+                // Only south room available
+                else if(j==n-1)best = dp[j];
+                // Only east room available
+                else if(i==m-1)best = dp[j+1];
+                // Pick the room which requires min entry health
+                else best = Math.min(dp[j],dp[j+1]);
+                
+                // While minimizing health, if this room replenishes health, then minimum entry health still needs to be 1 as 0 and below is not applicable
+                // Exit health - health addition(or subtraction) in this room = min required entry health
+                dp[j] = Math.max(1, best - A.get(i).get(j));
+            }
+        }
+        // Min health required before entering first room
+        return dp[0];
+    }
+    */
+
 }
