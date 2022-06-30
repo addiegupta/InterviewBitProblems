@@ -25,3 +25,24 @@ vector<int> Solution::wave(vector<int> &A) {
     }
     return A;
 }
+
+//Java O(n) Solution added later 01/2022
+public static void convertToWave(int arr[], int n){
+        
+        // keep peaks at even position, by swapping large values of adjacent odd positions
+	// if peaks are in place, valleys will automatically be in place too
+	// hence, no need to sort; every decision can be made locally
+        for(int i = 0; i < n; i += 2){
+            if(i > 0 && arr[i-1] > arr[i]){
+                swap(arr, i, i-1);
+            }
+            if(i < n-1 && arr[i+1] > arr[i]){
+                swap(arr,i,i+1);
+            }
+        }
+    }
+    private static void swap(int[] arr, int i, int j){
+        int temp = arr[i];
+        arr[i] = arr[i+1];
+        arr[i+1] = temp;
+    }
